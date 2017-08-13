@@ -1,0 +1,6 @@
+
+FROM ruby:2.4.1-alpine3.4
+
+RUN \
+apk add -U build-base tzdata postgresql-dev sqlite-dev nodejs
+

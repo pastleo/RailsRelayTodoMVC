@@ -22,6 +22,7 @@ module.exports = merge(sharedConfig, {
     port: settings.dev_server.port,
     contentBase: output.path,
     publicPath: output.publicPath,
+    allowedHosts: output.allowedHosts,
     compress: true,
     headers: { 'Access-Control-Allow-Origin': '*' },
     historyApiFallback: true,

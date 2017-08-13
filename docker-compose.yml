@@ -1,0 +1,29 @@
+version: '3.1'
+volumes:
+  bundle:
+    driver: local
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: docker/dev
+    ports:
+    - '3000:3000'
+    volumes:
+    - .:/usr/src/app
+    - bundle:/usr/local/bundle
+    working_dir: /usr/src/app
+    depends_on:
+    - webpack_dev
+    command: sh
+  webpack_dev:
+    build:
+      context: .
+      dockerfile: docker/webpack_dev
+    ports:
+    - '8080:8080'
+    volumes:
+    - .:/usr/src/app
+    working_dir: /usr/src/app
+    command: sh -c 'yarn && ./bin/webpack-dev-server'
+
